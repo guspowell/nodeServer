@@ -3,8 +3,15 @@ var app = express();
 var server = require('http').createServer(app);
 var port = 9999
 
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', function(request, response) {
-  response.send("Hello world")
+  response.render('index');
+});
+
+app.get('/greeting', function(request, response) {
+  response.render('/greeting', {name: "gus"});
 });
 
 server.listen(port, function() {
