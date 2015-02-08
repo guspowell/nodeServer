@@ -6,4 +6,8 @@ server.listen(3000, function() {
   console.log('Server listening on port 3000');
 });
 
+app.get('/', function(request, response) {
+  response.send('hello world')
+});
+
 module.exports = server;
