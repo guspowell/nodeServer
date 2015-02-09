@@ -4,10 +4,10 @@ var server = require('http').createServer(app);
 
 app.set('view engine', 'ejs');
 app.use('/stylesheets', express.static(__dirname + '/public/stylesheets'));
-app.use('javascripts', express.static(__dirname + '/public/javascripts'));
+app.use('/javascripts', express.static(__dirname + '/public/javascripts'));
 
 app.get('/', function(request, response) {
-  response.render('index', request.query);
+  response.render('index');
 });
 
 app.get('/reflect.json?', function(request, response) {
@@ -15,6 +15,8 @@ app.get('/reflect.json?', function(request, response) {
 });
 
 app.get('/users/:user', function(request, response) {
+  response.header('Access-Control-Allow-Origin','*');
+  response.header('Content-Type','application/json; charset=utf-8');
   response.render(request.params.user);
 });
 
