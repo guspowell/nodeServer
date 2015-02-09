@@ -24,4 +24,10 @@ describe("homepage", function() {
     });
   });
 
+  it('should return JSON for a user', function() {
+    casper.thenOpen(host + 'users/guspowell', function(response) {
+      expect('body').to.include.text('"login": "guspowell"')
+    });
+  });
+
 });

@@ -14,7 +14,9 @@ app.get('/reflect.json?', function(request, response) {
   response.render('reflect', {query: request.query} );
 });
 
-
+app.get('/users/:user', function(request, response) {
+  response.render(request.params.user);
+});
 
 server.listen(3000, function() {
   console.log('Server listening on port 3000');
